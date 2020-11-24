@@ -8,18 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieComponent implements OnInit {
 
-  movies: any;
+  topMovies: any;
+
+  movieSearch: string;
 
   constructor(private movieService: MovieService) {
+    this.movieSearch = "";
   }
 
   ngOnInit(): void {
-    this.getMovies();
+    this.getTopMovies();
   }
 
-  getMovies(): void {
-    this.movieService.getMovies().subscribe((data: any) => {
-      this.movies = data;
+  getTopMovies(): void {
+    this.movieService.getTopMovies().subscribe((data: any) => {
+      this.topMovies = data;
       console.log(data);
     });
   }

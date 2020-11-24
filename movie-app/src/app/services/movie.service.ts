@@ -7,17 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class MovieService {
 
-  ROOT_URL: string = 'https://api.themoviedb.org/3/movie/top_rated?api_key=';
+  TOP_MOVIES: string = 'https://api.themoviedb.org/3/movie/top_rated?api_key=';
   API_KEY: string = '99ad5de99d60fca56d0ed4680583e487';
   LANG: string = '&language=en-US&page=1';
 
   movies: any;
 
   constructor(private http: HttpClient) {
-
   }
 
-  getMovies(): Observable<any> {
-    return this.http.get(this.ROOT_URL+this.API_KEY+this.LANG);
+  getTopMovies(): Observable<any> {
+    return this.http.get(this.TOP_MOVIES + this.API_KEY + this.LANG);
+  }
+
+  getAllMovies(): Observable<any> {
+    return this.http.get(this.TOP_MOVIES + this.API_KEY + this.LANG);
   }
 }
