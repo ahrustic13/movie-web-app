@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { ShowsComponent } from './components/shows/shows.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailShowComponent } from './components/detail-show/detail-show.component';
+import { DetailMovieComponent } from './components/detail-movie/detail-movie.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     MovieComponent,
     ShowsComponent,
     SearchPipe,
+    DetailShowComponent,
+    DetailMovieComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,21 +17,22 @@
         [ngClass]="{'no-display': search.length < 3,
         'display':  search.length >= 3}"
         *ngFor="let show of topShows | search: search:'name'">
-          <div> 
-              <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
-              <h2 class="title">{{show.name}}</h2>
-          </div> 
-    </div>
-    
-    <div class="show-element"
-          [ngClass]="{'no-display': search.length >= 3,
-                  'display':  search.length < 3}"
-          *ngFor="let show of topShows"
-          >
-        <div> 
+        <a routerLink="/shows/{{show.id}}"> 
             <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
             <h2 class="title">{{show.name}}</h2>
-        </div> 
-      </div>
+        </a>    
+    </div>
+
+    <div class="show-element"
+          [ngClass]="{'no-display': search.length >= 3,
+                    'display':  search.length < 3}"
+          *ngFor="let show of topShows"
+          >
+        <a routerLink="/shows/{{show.id}}"> 
+            <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
+            <h2 class="title">{{show.name}}</h2>
+        </a> 
   </div>
 </div>
+
+<router-outlet></router-outlet>

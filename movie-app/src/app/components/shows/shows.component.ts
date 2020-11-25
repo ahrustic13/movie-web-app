@@ -13,10 +13,12 @@ export class ShowsComponent implements OnInit {
   searchShows: any;
   allShows: any;
   search: string;
+  showId: string;
 
-  constructor(private showService: ShowsService,private shareInput: InputShareService) { 
+  constructor(private showService: ShowsService, private shareInput: InputShareService) { 
     this.getTopShows();
     this.search = "";
+    this.showId = "";
   }
 
   ngOnInit(): void {
@@ -47,7 +49,6 @@ export class ShowsComponent implements OnInit {
     });
   }
 
-
   newInputValue() {
     this.getSearchShows();
   }
@@ -55,5 +56,9 @@ export class ShowsComponent implements OnInit {
   searchShow(input: any) {
     console.log(input);
     this.shareInput.changeSearchInputValue(input);
+  }
+
+  getShowDetail(id: any) {
+
   }
 }
