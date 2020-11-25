@@ -1,0 +1,21 @@
+<p>movie works!</p>
+
+<input
+    class="form-control"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+    [(ngModel)]="movieSearch"
+/>
+
+<div [ngClass]="{'no-display': movieSearch.length < 3,
+                  'display':  movieSearch.length >= 3}"
+                *ngFor="let movie of allMovies | search: movieSearch:'title'">
+    {{movie.title}}
+</div>
+
+<div [ngClass]="{'no-display': movieSearch.length >= 3,
+                'display':  movieSearch.length < 3}"
+    *ngFor="let movie of topMovies">
+    {{movie.title}}
+</div>
