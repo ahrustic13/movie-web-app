@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class MovieService {
 
   TOP_MOVIES: string = 'https://api.themoviedb.org/3/movie/top_rated?api_key=';
@@ -12,9 +13,6 @@ export class MovieService {
   API_KEY: string = '99ad5de99d60fca56d0ed4680583e487';
   LANG: string = '&language=en-US&page=';
   
-
-  allMovies: any;
-
   constructor(private http: HttpClient) {
   }
 

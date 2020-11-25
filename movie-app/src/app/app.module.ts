@@ -7,15 +7,13 @@ import { RouterModule } from "@angular/router";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { ShowsComponent } from './components/shows/shows.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
+    AppComponent, 
     MovieComponent,
     ShowsComponent,
     SearchPipe,

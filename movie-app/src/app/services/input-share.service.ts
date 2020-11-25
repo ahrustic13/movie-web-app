@@ -6,7 +6,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class InputShareService {
 
-  private searchInputSource = new BehaviorSubject<string>("proba");
+  private searchInputSource = new BehaviorSubject<string>("");
   searchInput = this.searchInputSource.asObservable();
 
   constructor() { }

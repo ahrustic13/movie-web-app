@@ -7,6 +7,18 @@
   aria-label="Search"
   [(ngModel)]="search"
   (change)="newInputValue()"
+  (ngModelChange)="searchShow($event)"
   />
   {{search}}
 
+  <div [ngClass]="{'no-display': search.length < 3,
+                  'display':  search.length >= 3}"
+                *ngFor="let show of allShows | search: search:'name'">
+                {{show.name}}
+  </div>
+
+ <div [ngClass]="{'no-display': search.length >= 3,
+    'display':  search.length < 3}"
+    *ngFor="let show of topShows">
+    {{show.name}}
+  </div>

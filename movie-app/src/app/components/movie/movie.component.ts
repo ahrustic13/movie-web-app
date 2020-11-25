@@ -21,6 +21,7 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTopMovies();
+    this.allMovies = [];
     for (let i = 1; i <= 500; i++) {
       this.getAllMovies(i);
     }
