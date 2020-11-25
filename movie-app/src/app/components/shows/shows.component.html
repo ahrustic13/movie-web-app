@@ -1,31 +1,37 @@
-<p>shows works!</p>
-
-<input
-  class="form-control"
-  type="text"
-  placeholder="Search"
-  aria-label="Search"
-  [(ngModel)]="search"
-  (change)="newInputValue()"
-  (ngModelChange)="searchShow($event)"
-  />
-  {{search}}
-
-  <div [ngClass]="{'no-display': search.length < 3,
-                  'display':  search.length >= 3}"
-                *ngFor="let show of topShows | search: search:'name'">
-                {{show.name}}
+<div>
+  <div class="search-div">
+  <input
+    class="form-control search"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+    [(ngModel)]="search"
+    (change)="newInputValue()"
+    (ngModelChange)="searchShow($event)"
+    />
+    {{search}}
   </div>
 
   <div class="shows-list" >
- <div class="show-element"
-      [ngClass]="{'no-display': search.length >= 3,
-              'display':  search.length < 3}"
-      *ngFor="let show of topShows"
-      >
-    <div> 
-        <img src="https://image.tmdb.org/t/p/w185{{show.poster_path}}" />
-        <h2>{{show.name}}</h2>
-    </div> 
+    <div class="show-element"
+        [ngClass]="{'no-display': search.length < 3,
+        'display':  search.length >= 3}"
+        *ngFor="let show of topShows | search: search:'name'">
+          <div> 
+              <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
+              <h2 class="title">{{show.name}}</h2>
+          </div> 
+    </div>
+    
+    <div class="show-element"
+          [ngClass]="{'no-display': search.length >= 3,
+                  'display':  search.length < 3}"
+          *ngFor="let show of topShows"
+          >
+        <div> 
+            <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
+            <h2 class="title">{{show.name}}</h2>
+        </div> 
+      </div>
   </div>
 </div>
