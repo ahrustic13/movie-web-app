@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InputShareService } from './../../services/input-share.service';
+import { InputShareService } from 'src/app/services/input-share.service';
 
 @Component({
   selector: 'app-shows',
@@ -11,17 +11,17 @@ export class ShowsComponent implements OnInit {
   topShows: any;
   allShows: any;
 
-  @Input() search: string;
+  search: string;
 
-  constructor(private inputShare: InputShareService) { 
+  constructor(private shareInput: InputShareService) { 
     this.search = "";
   }
 
   ngOnInit(): void {
-    this.inputShare.searchInput.subscribe(searchInput => this.search = searchInput)
+    this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
   }
 
-  newSearchInput(search: string) {
-    this.inputShare.changeSearchInputValue(search);
+  newInputValue() {
+    this.shareInput.changeSearchInputValue(this.search);
   }
 }

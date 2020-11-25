@@ -1,6 +1,6 @@
 import { MovieService } from './../../services/movie.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { InputShareService } from './../../services/input-share.service';
+import { InputShareService } from 'src/app/services/input-share.service';
 
 @Component({
   selector: 'app-movie',
@@ -12,20 +12,20 @@ export class MovieComponent implements OnInit {
   topMovies: any;
   allMovies: any;
 
-  @Input() search: string;
+  search: string;
 
-  constructor(private movieService: MovieService, private inputShare: InputShareService) {
+  constructor(private movieService: MovieService, private shareInput: InputShareService) {
     this.search = "";
     this.allMovies = [];
   }
 
   ngOnInit(): void {
     this.getTopMovies();
-    /*for (let i = 1; i <= 500; i++) {
+    for (let i = 1; i <= 500; i++) {
       this.getAllMovies(i);
-    }*/
-    this.allMovies  =this.getTopMovies();
-    this.inputShare.searchInput.subscribe(searchInput => this.search = searchInput)
+    }
+    //this.allMovies = this.getTopMovies();
+    this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
   }
 
   getTopMovies(): void {
@@ -40,4 +40,9 @@ export class MovieComponent implements OnInit {
       this.allMovies = this.allMovies.concat(data.results);
     });
   }
+
+  newInputValue() {
+    this.shareInput.changeSearchInputValue(this.search);
+  }
+
 }
