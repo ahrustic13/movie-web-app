@@ -3,5 +3,16 @@
 }
 
 .display {
-    display: flex;
+    display: block;
+}
+
+.shows-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.show-element {
+    margin: auto;
 }

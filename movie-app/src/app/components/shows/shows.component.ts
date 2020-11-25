@@ -22,22 +22,22 @@ export class ShowsComponent implements OnInit {
   ngOnInit(): void {
     this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
     this.allShows = [];
-    for (let i = 1; i <= 500; i++) {
+   /* for (let i = 1; i <= 500; i++) {
       this.getAllShows(i);
-    }
+    }*/
   }
 
   getTopShows(): void {
     this.showService.getTopShows().subscribe((data: any) => {
       this.topShows = data.results;
       this.topShows.splice(-10,10);
+      console.log(this.topShows);
     });
   }
 
   getSearchShows(): void {
     this.showService.getSearchShows(this.search, 1).subscribe((data: any) => {
       this.searchShows = data.results;
-      console.log(data.results);
     });
   }
 

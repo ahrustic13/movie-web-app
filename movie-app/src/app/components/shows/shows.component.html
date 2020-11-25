@@ -13,12 +13,19 @@
 
   <div [ngClass]="{'no-display': search.length < 3,
                   'display':  search.length >= 3}"
-                *ngFor="let show of allShows | search: search:'name'">
+                *ngFor="let show of topShows | search: search:'name'">
                 {{show.name}}
   </div>
 
- <div [ngClass]="{'no-display': search.length >= 3,
-    'display':  search.length < 3}"
-    *ngFor="let show of topShows">
-    {{show.name}}
+  <div class="shows-list" >
+ <div class="show-element"
+      [ngClass]="{'no-display': search.length >= 3,
+              'display':  search.length < 3}"
+      *ngFor="let show of topShows"
+      >
+    <div> 
+        <img src="https://image.tmdb.org/t/p/w185{{show.poster_path}}" />
+        <h2>{{show.name}}</h2>
+    </div> 
   </div>
+</div>
