@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { InputShareService } from 'src/app/services/input-share.service';
 import { ShowsService } from 'src/app/services/shows.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-shows',
@@ -17,18 +18,20 @@ export class ShowsComponent implements OnInit {
   currentPage: any;
   numberOfPages: any;
 
-  constructor(private showService: ShowsService, private shareInput: InputShareService) { 
+  constructor(private showService: ShowsService, private shareInput: InputShareService, private stateService: StateService) { 
     this.getTopShows();
     this.search = "";
     this.showId = "";
     this.currentPage = 1;
     this.numberOfPages = 1;
     this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
+    this.stateService.showPage.subscribe(inputValue => this.currentPage = inputValue);
     this.getSearchShows();
   }
 
   ngOnInit(): void {
     this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
+    this.stateService.showPage.subscribe(inputValue => this.currentPage = inputValue);
     this.getSearchShows();
     this.getTopShows();
   }
@@ -70,12 +73,14 @@ export class ShowsComponent implements OnInit {
     if (this.currentPage === this.numberOfPages) this.currentPage = this.numberOfPages;
     else this.currentPage++;
     this.getSearchShows();
+    this.stateService.changeShowPageNumber(this.currentPage);
   }
 
   previous() {
     if (this.currentPage === 1) this.currentPage = 1;
     else this.currentPage--;
     this.getSearchShows();
+    this.stateService.changeShowPageNumber(this.currentPage);
   }
 
   searchShow(input: any) {

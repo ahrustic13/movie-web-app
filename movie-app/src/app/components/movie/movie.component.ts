@@ -1,6 +1,7 @@
 import { MovieService } from './../../services/movie.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { InputShareService } from 'src/app/services/input-share.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-movie',
@@ -16,13 +17,15 @@ export class MovieComponent implements OnInit {
   timeout: any = null;
   currentPage: any;
   numberOfPages: any;
+  state: any;
 
-  constructor(private movieService: MovieService, private shareInput: InputShareService) {
+  constructor(private movieService: MovieService, private shareInput: InputShareService, private stateService: StateService) {
     this.search = "";
     this.allMovies = [];
     this.currentPage = 1;
     this.numberOfPages = 1;
     this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
+    this.stateService.moviePage.subscribe(inputValue => this.currentPage = inputValue);
     this.getSearchMovies();
     this.getTopMovies();
   }
@@ -34,6 +37,7 @@ export class MovieComponent implements OnInit {
       this.getAllMovies(i);
     }*/
     this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
+    this.stateService.moviePage.subscribe(inputValue => this.currentPage = inputValue);
     this.getSearchMovies();
   }
 
@@ -76,17 +80,18 @@ export class MovieComponent implements OnInit {
     if (this.currentPage === this.numberOfPages) this.currentPage = this.numberOfPages;
     else this.currentPage++;
     this.getSearchMovies();
+    this.stateService.changeMoviePageNumber(this.currentPage);
   }
 
   previous() {
     if (this.currentPage === 1) this.currentPage = 1;
     else this.currentPage--;
     this.getSearchMovies();
+    this.stateService.changeMoviePageNumber(this.currentPage);
   }
 
   newInputValue() {
     this.shareInput.changeSearchInputValue(this.search);
     this.getSearchMovies();
   }
-
 }
