@@ -1,23 +1,37 @@
-<p>movie works!</p>
+<div>
+  <div class="search-div">
+  <input
+    class="form-control search"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+    [(ngModel)]="search"
+    (change)="newInputValue()"
+    />
+    {{search}}
+  </div>
 
-<input
-  class="form-control"
-  type="text"
-  placeholder="Search"
-  aria-label="Search"
-  [(ngModel)]="search"
-  (change)="newInputValue()"
-  />
-  {{search}}
+  <div class="movies-list" >
+    <div class="movie-element"
+        [ngClass]="{'no-display': search.length < 3,
+        'display':  search.length >= 3}"
+        *ngFor="let movie of topMovies | search: search:'title'">
+        <a routerLink="/movies/{{movie.id}}"> 
+            <img src="https://image.tmdb.org/t/p/w342{{movie.poster_path}}" />
+            <h2 class="title">{{movie.title}}</h2>
+        </a>    
+    </div>
 
-<div [ngClass]="{'no-display': search.length < 3,
-                  'display':  search.length >= 3}"
-                *ngFor="let movie of allMovies | search: search:'title'">
-    {{movie.title}}
+    <div class="movie-element"
+          [ngClass]="{'no-display': search.length >= 3,
+                    'display':  search.length < 3}"
+          *ngFor="let movie of topMovies"
+          >
+        <a routerLink="/movies/{{movie.id}}"> 
+            <img src="https://image.tmdb.org/t/p/w342{{movie.poster_path}}" />
+            <h2 class="title">{{movie.title}}</h2>
+        </a> 
+  </div>
 </div>
 
-<div [ngClass]="{'no-display': search.length >= 3,
-                'display':  search.length < 3}"
-    *ngFor="let movie of topMovies">
-    {{movie.title}}
-</div>
+<router-outlet></router-outlet>

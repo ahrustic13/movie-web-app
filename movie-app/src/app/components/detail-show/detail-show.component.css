@@ -27,8 +27,12 @@ ul {
     color: #FFD700;
     border: none;
     border-radius: 10px;
+    outline: none;
 }
 
+.btn-back:focus {
+    outline: none;
+}
 .containers {
     padding: 15px;
     margin-top: 15px;
