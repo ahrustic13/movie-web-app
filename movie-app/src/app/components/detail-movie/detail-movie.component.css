@@ -45,19 +45,15 @@ iframe {
     margin: auto;
 }
 
-.glow {
-    text-align: center;
-    color: #000;
-    text-shadow:
-    0 0 5px #FFD700,
-    0 0 10px #FFD700;
-}
-
 .detail-wrapper {
     box-shadow: 2px 2px 30px #FFD700;
     background-color: #1f1d1d;
     padding: 10px;
     border-radius: 10px;
+}
+
+.video-wrapper {
+    height: 400px;
 }
 
 .tablet-img {
