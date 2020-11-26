@@ -26,7 +26,7 @@ export class DetailShowComponent implements OnInit {
   getShowDetail(id: any) {
     this.detailService.getShowDetail(id).subscribe((data: any) => {
       this.show = data;
-      console.log(this.show.name);
+      console.log(this.show);
     });
   }
 
