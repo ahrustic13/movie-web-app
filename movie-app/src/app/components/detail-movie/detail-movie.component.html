@@ -1,0 +1,33 @@
+<button class="btn-back" (click)="backClicked()">Back</button>
+
+<div class="containers">
+    <div class="detail-wrapper">
+        <div class="video-wrapper">
+        </div>
+        <div class="image-wrapper" *ngIf="imageDisplay">
+            <img class="cover-photo mobile-img" src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}" />
+            <img class="cover-photo tablet-img" src="https://image.tmdb.org/t/p/w342{{movie.poster_path}}" />
+        </div>
+        <div class="detail-elements">
+
+            <h2> {{movie.title}} </h2>
+
+            <p> {{movie.overview}} </p>
+
+            <ul>Genres: 
+                <li class="genre" *ngFor="let genre of movie.genres">
+                    {{genre.name}}
+                </li>
+            </ul>
+            
+            <p> Vote average: {{movie.vote_average}} </p>
+
+            <p> Popularity: {{movie.popularity}} </p>
+
+            <p> Release date: {{movie.release_date}} </p>
+
+            <p> Runtime: {{movie.runtime}} min</p>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<button class="btn-back" (click)="backClicked()">Back</button>
+
+<h1 class="glow"> {{show.tagline}} </h1>
+
+<div class="containers">
+    <div class="detail-wrapper">
+        <div class="image-wrapper">
+            <img class="cover-photo mobile-img" src="https://image.tmdb.org/t/p/w185{{show.poster_path}}" />
+            <img class="cover-photo tablet-img" src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
+        </div>
+        <div class="detail-elements">
+
+            <h2> {{show.name}} </h2>
+
+            <p> {{show.overview}} </p>
+
+            <ul>Genres: 
+                <li class="genre" *ngFor="let genre of show.genres">
+                    {{genre.name}}
+                </li>
+            </ul>
+            
+            <p> Vote average: {{show.vote_average}} </p>
+
+            <p> Popularity: {{show.popularity}} </p>
+
+            <p> Type: {{show.type}} </p>
+
+            <p> Number of seasons: {{show.number_of_seasons}} </p>
+
+            <p> Number of episodes: {{show.number_of_episodes}} </p>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+button {
+    width: 100px;
+    height: 30px;
+    background-color:#FFD700;
+    color: #1f1d1d;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+button:hover {
+    background-color:#1f1d1d ;
+    color: #FFD700;
+    box-shadow: 2px 3px 9px #FFD700;
+}
+
+.search-div {
+    margin: 20px auto;
+}
+
+.search {
+    width: 80%;
+    height: 28px;
+    font-size: 16px;
+    position: relative;
+    display: block;
+    margin : 0 auto;
+    outline: none;
+    border: none;
+    box-shadow: 2px 3px 9px #FFD700;
+    background-color: #1f1d1d;
+    color: #FFD700;
+    top: 0px;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+.search::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #FFD700;
+    opacity: 0.5; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #FFD700;
+    opacity: 0.5;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #FFD700;
+    opacity: 0.5;
+}
+
+.no-display {
+    display: none;
+}
+
+.display {
+    display: block;
+}
+
+.movies-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.movie-element {
+    margin: auto;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.movie-element:hover {
+    box-shadow: 2px 2px 30px #FFD700;
+    border-color:#FFD700;
+    background-color: #1f1d1d;
+}
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    color: #FFD700;
+    text-align: center;
+}
+
+.page-navigation {
+    position: relative;
+    padding: 40px 0;
+}
+
+.nav-buttons {
+    display: inline-flex;
+    right: 40%;
+    position: absolute;
+}
+
+@media (min-width: 768px) {
+    .search {
+        width: 65%;
+    }
+
+    .movies-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1150px) {
+    .search {
+        width: 50%;
+    }
+
+    .movies-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .search {
+        top: -58px;
+    }
+}

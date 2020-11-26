@@ -1,0 +1,55 @@
+<div>
+  <div class="search-div">
+  <input
+    class="form-control search"
+    type="text"
+    placeholder="Search"
+    aria-label="Search"
+    [(ngModel)]="search"
+    (keyup)="onKeySearch($event)"
+    (ngModelChange)="searchShow($event)"
+    />
+    {{search}}
+  </div>
+
+  <div class="shows-list" >
+    <div class="show-element"
+        [ngClass]="{'no-display': search.length < 3,
+        'display':  search.length >= 3}"
+        *ngFor="let show of searchShows ">
+        <a routerLink="/shows/{{show.id}}"> 
+            <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
+            <h2 class="title">{{show.name}}</h2>
+        </a>    
+    </div>
+
+    <div class="show-element"
+          [ngClass]="{'no-display': search.length >= 3,
+                    'display':  search.length < 3}"
+          *ngFor="let show of topShows"
+          >
+        <a routerLink="/shows/{{show.id}}"> 
+            <img src="https://image.tmdb.org/t/p/w342{{show.poster_path}}" />
+            <h2 class="title">{{show.name}}</h2>
+        </a> 
+  </div>
+</div>
+
+<div class="page-navigation">
+  <div class="nav-buttons">
+    <button  [ngClass]="{'no-display': numberOfPages <= 1,
+                        'display':  numberOfPages > 1}"
+              (click)="previous()"           
+              >
+              Previous
+    </button>
+    <button  [ngClass]="{'no-display': numberOfPages <= 1,
+                        'display':  numberOfPages > 1}"
+              (click)="next()"          
+              >
+              Next
+    </button>
+  </div> 
+</div>
+
+<router-outlet></router-outlet>
