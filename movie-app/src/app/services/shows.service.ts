@@ -20,7 +20,7 @@ export class ShowsService {
   }
 
   getSearchShows(search: any, page: any): Observable<any> {
-     return this.http.get(this.SEARCH_SHOW + this.API_KEY + this.LANG + page + '&query=' + search);
+     return this.http.get(this.SEARCH_SHOW + this.API_KEY + this.LANG + page + '&query=' + search + '&include_adult=false');
   }
 
   getAllShows(i: any): Observable<any> {

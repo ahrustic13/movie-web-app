@@ -6,6 +6,7 @@
     placeholder="Search"
     aria-label="Search"
     [(ngModel)]="search"
+    (keyup)="onKeySearch($event)"
     (change)="newInputValue()"
     />
     {{search}}
@@ -15,9 +16,9 @@
     <div class="movie-element"
         [ngClass]="{'no-display': search.length < 3,
         'display':  search.length >= 3}"
-        *ngFor="let movie of topMovies | search: search:'title'">
+        *ngFor="let movie of searchMovies "> <!--| search: search:'title'-->
         <a routerLink="/movies/{{movie.id}}"> 
-            <img src="https://image.tmdb.org/t/p/w342{{movie.poster_path}}" />
+            <img src="https://image.tmdb.org/t/p/w342{{movie.poster_path}}" /> 
             <h2 class="title">{{movie.title}}</h2>
         </a>    
     </div>
@@ -34,4 +35,20 @@
   </div>
 </div>
 
+<div class="page-navigation">
+  <div class="nav-buttons">
+    <button  [ngClass]="{'no-display': numberOfPages <= 1,
+                        'display':  numberOfPages > 1}"
+              (click)="previous()"           
+              >
+              Previous
+    </button>
+    <button  [ngClass]="{'no-display': numberOfPages <= 1,
+                        'display':  numberOfPages > 1}"
+              (click)="next()"          
+              >
+              Next
+    </button>
+  </div> 
+</div>
 <router-outlet></router-outlet>

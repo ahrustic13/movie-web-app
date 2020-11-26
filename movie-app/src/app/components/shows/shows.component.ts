@@ -11,54 +11,74 @@ export class ShowsComponent implements OnInit {
 
   topShows: any;
   searchShows: any;
-  allShows: any;
   search: string;
   showId: string;
+  timeout: any = null;
+  currentPage: any;
+  numberOfPages: any;
 
   constructor(private showService: ShowsService, private shareInput: InputShareService) { 
     this.getTopShows();
     this.search = "";
     this.showId = "";
+    this.currentPage = 1;
+    this.numberOfPages = 1;
+    this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
+    this.getSearchShows();
   }
 
   ngOnInit(): void {
     this.shareInput.searchInput.subscribe(inputValue => this.search = inputValue);
-    this.allShows = [];
-   /* for (let i = 1; i <= 500; i++) {
-      this.getAllShows(i);
-    }*/
+    this.getSearchShows();
+    this.getTopShows();
   }
 
   getTopShows(): void {
     this.showService.getTopShows().subscribe((data: any) => {
       this.topShows = data.results;
       this.topShows.splice(-10,10);
-      console.log(this.topShows);
     });
   }
 
   getSearchShows(): void {
-    this.showService.getSearchShows(this.search, 1).subscribe((data: any) => {
+    this.showService.getSearchShows(this.search, this.currentPage).subscribe((data: any) => {
       this.searchShows = data.results;
+      this.numberOfPages = data.total_pages;
     });
   }
 
-  getAllShows(i:any): void {
-    this.showService.getAllShows(i).subscribe((data: any) => {
-      this.allShows = this.allShows.concat(data.results);
-    });
+  onKeySearch(event: any) {
+    clearTimeout(this.timeout);
+    var $this = this;
+    this.timeout = setTimeout(function () {
+      if (event.keyCode != 13) {
+        $this.executeListing(event.target.value);
+      }
+    }, 1000);
+  }
+
+  private executeListing(value: string) {
+    this.search = value;
+    this.getSearchShows();
   }
 
   newInputValue() {
     this.getSearchShows();
   }
 
-  searchShow(input: any) {
-    console.log(input);
-    this.shareInput.changeSearchInputValue(input);
+  next() {
+    if (this.currentPage === this.numberOfPages) this.currentPage = this.numberOfPages;
+    else this.currentPage++;
+    this.getSearchShows();
   }
 
-  getShowDetail(id: any) {
+  previous() {
+    if (this.currentPage === 1) this.currentPage = 1;
+    else this.currentPage--;
+    this.getSearchShows();
+  }
 
+  searchShow(input: any) {
+    this.shareInput.changeSearchInputValue(input);
   }
 }

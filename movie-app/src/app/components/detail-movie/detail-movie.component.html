@@ -1,20 +1,21 @@
 <button class="btn-back" (click)="backClicked()">Back</button>
 
-<h1 class="glow"> {{movie.tagline}} </h1>
-
 <div class="containers">
     <div class="detail-wrapper">
         <div class="video-wrapper">
-            <iframe width="420" height="345" src='{{this.videoUrl}}'  *ngIf="videos.length">
+            <iframe width="420" height="345" src='{{videoUrl.changingThisBreaksApplicationSecurity}}'  *ngIf="videoDisplay">
             </iframe>
+
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+            {{videoUrl}}
         </div>
-        <div class="image-wrapper" *ngIf="!videos.length">
+        <div class="image-wrapper" *ngIf="imageDisplay">
             <img class="cover-photo mobile-img" src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}" />
             <img class="cover-photo tablet-img" src="https://image.tmdb.org/t/p/w342{{movie.poster_path}}" />
         </div>
         <div class="detail-elements">
 
-            <h2> {{movie.name}} </h2>
+            <h2> {{movie.title}} </h2>
 
             <p> {{movie.overview}} </p>
 

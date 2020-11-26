@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { InputShareService } from './services/input-share.service';
 
 @Component({
@@ -11,6 +12,12 @@ export class AppComponent {
 
   navShowToggle: boolean = true;
   navMovieToggle: boolean = false;
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.navigate([''])
+  }
 
   showToggle() {
     this.navShowToggle = true;
