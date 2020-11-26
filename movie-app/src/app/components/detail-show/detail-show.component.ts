@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { DetailShowService } from 'src/app/services/detail-show.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-detail-show',
@@ -12,7 +13,7 @@ export class DetailShowComponent implements OnInit {
   id: any;
   show: any;
 
-  constructor(private detailService: DetailShowService, private route: ActivatedRoute) {
+  constructor(private detailService: DetailShowService, private route: ActivatedRoute, private _location: Location) {
 
   }
 
@@ -29,5 +30,8 @@ export class DetailShowComponent implements OnInit {
       console.log(this.show);
     });
   }
-
+  
+  backClicked() {
+    this._location.back();
+  }
 }

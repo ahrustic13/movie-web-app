@@ -8,4 +8,17 @@ import { InputShareService } from './services/input-share.service';
 })
 export class AppComponent {
   title = 'movie-app';
+
+  navShowToggle: boolean = true;
+  navMovieToggle: boolean = false;
+
+  showToggle() {
+    this.navShowToggle = true;
+    this.navMovieToggle = false;
+  }
+
+  movieToggle() {
+    this.navShowToggle = false;
+    this.navMovieToggle = true;
+  }
 }

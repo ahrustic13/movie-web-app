@@ -1,5 +1,21 @@
 <ul>
-    <li><a class="nav" routerLink="movies">Movies</a> </li>
-    <li><a class="nav" routerLink="shows">TV shows</a></li>
+    <li><a class="nav"
+            [ngClass]="{'active': navMovieToggle === true,
+                        '':  !navMovieToggle === false}" 
+            routerLink="movies" 
+            (click)="movieToggle()"
+            >
+            Movies
+        </a> 
+    </li>
+    <li><a class="nav" 
+            [ngClass]="{'active': navShowToggle === true,
+                        '':  !navShowToggle === false}"
+            routerLink="shows"
+            (click)="showToggle()"
+            >
+            TV shows
+        </a>
+    </li>
 </ul>
 <router-outlet></router-outlet>

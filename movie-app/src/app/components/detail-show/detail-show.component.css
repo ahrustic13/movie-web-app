@@ -17,6 +17,18 @@ ul {
     color: #FFD700;
 }
 
+.btn-back {
+    position: absolute;
+    right: 19px;
+    width: 100px;
+    height: 30px;
+    top: 16px;
+    background-color: #1f1d1d;
+    color: #FFD700;
+    border: none;
+    border-radius: 10px;
+}
+
 .containers {
     padding: 15px;
     margin-top: 15px;
