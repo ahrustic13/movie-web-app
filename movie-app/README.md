@@ -1,6 +1,6 @@
 # MovieApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2. If you want to run this project please change line 6 in package.json from "start": "node server.js" to  "start": "ng serve".
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2. If you want to run this project please change line 6 in package.json from `"start": "node server.js"` to  `"start": "ng serve"`.
 
 ## Development server
 
